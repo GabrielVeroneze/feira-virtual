@@ -1,7 +1,17 @@
 import { Button, Input, InputAdornment, InputLabel } from '@mui/material'
 import { Container, Titulo, InputContainer } from './styles'
+import { useNavigate } from 'react-router-dom'
+import { UsuarioContext } from 'commom/context/Usuario'
+import { useContext } from 'react'
 
-const Login = ({ nome, setNome, saldo, setSaldo }) => {
+const Login = () => {
+    const navigate = useNavigate()
+    const { nome, setNome, saldo, setSaldo } = useContext(UsuarioContext)
+
+    const redirecionar = () => {
+        navigate('/feira')
+    }
+
     return (
         <Container>
             <Titulo>Insira o seu nome</Titulo>
@@ -24,7 +34,7 @@ const Login = ({ nome, setNome, saldo, setSaldo }) => {
                     onChange={event => setSaldo(event.target.value)}
                 />
             </InputContainer>
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" onClick={redirecionar}>
                 Avançar
             </Button>
         </Container>
