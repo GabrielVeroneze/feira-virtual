@@ -1,26 +1,20 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { useState } from "react"
+import { UsuarioProvider } from "commom/context/Usuario"
 import Carrinho from "Pages/Carrinho"
 import Feira from "Pages/Feira"
 import Login from "Pages/Login"
 
 const Router = () => {
-    const [nome, setNome] = useState('')
-    const [saldo, setSaldo] = useState(0)
-
     return (
         <BrowserRouter>
             <Routes>
                 <Route
                     path="/"
                     element={
-                        <Login
-                            nome={nome}
-                            setNome={setNome}
-                            saldo={saldo}
-                            setSaldo={setSaldo}
-                        />
-                    }
+                        <UsuarioProvider>
+                            <Login />
+                        </UsuarioProvider>
+                    } 
                 />
                 <Route path="/feira" element={<Feira />} />
                 <Route path="/carrinho" element={<Carrinho />} />
