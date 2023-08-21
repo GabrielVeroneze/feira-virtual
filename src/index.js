@@ -1,8 +1,8 @@
 import { StyledEngineProvider, ThemeProvider, createTheme } from '@mui/material';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import Router from 'routes';
 import './index.css';
-import Login from './Pages/Login';
 
 const theme = createTheme({
     palette: {
@@ -20,7 +20,7 @@ root.render(
     <React.StrictMode>
         <StyledEngineProvider injectFirst>
             <ThemeProvider theme={theme}>
-                <Login />
+                <Router />
             </ThemeProvider>
         </StyledEngineProvider>
     </React.StrictMode>
