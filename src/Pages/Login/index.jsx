@@ -1,7 +1,7 @@
 import { Button, Input, InputAdornment, InputLabel } from '@mui/material'
 import { Container, Titulo, InputContainer } from './styles'
 import { useNavigate } from 'react-router-dom'
-import { UsuarioContext } from 'commom/context/Usuario'
+import { UsuarioContext } from 'common/context/Usuario'
 import { useContext } from 'react'
 
 const Login = () => {
