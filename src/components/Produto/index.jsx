@@ -6,8 +6,26 @@ import { CarrinhoContext } from 'common/context/Carrinho'
 
 const Produto = ({ nome, foto, id, valor, unidade }) => {
     const { carrinho, setCarrinho } = useContext(CarrinhoContext)
-    // console.log(carrinho)
+    
+    const adicionarProduto = (novoProduto) => {
+        const possuiProduto = carrinho.some(itemCarrinho => itemCarrinho.id === novoProduto.id)
 
+        if(!possuiProduto) {
+            novoProduto.quantidade = 1
+            setCarrinho(carrinhoAnterior => [...carrinhoAnterior, novoProduto])
+            return
+        }
+
+        setCarrinho(carrinhoAnterior => (
+            carrinhoAnterior.map(itemCarrinho => {
+                if(itemCarrinho.id === novoProduto.id) {
+                    itemCarrinho.quantidade += 1
+                }
+                return itemCarrinho
+            })
+        ))
+    }
+    
     return (
         <Container>
             <div>
@@ -20,7 +38,7 @@ const Produto = ({ nome, foto, id, valor, unidade }) => {
                 <IconButton color="secondary">
                     <Remove />
                 </IconButton>
-                <IconButton>
+                <IconButton onClick={() => adicionarProduto({ nome, foto, id, valor })}>
                     <Add />
                 </IconButton>
             </div>
