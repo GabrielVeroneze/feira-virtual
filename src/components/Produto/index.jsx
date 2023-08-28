@@ -1,9 +1,13 @@
-import { memo } from 'react'
+import { memo, useContext } from 'react'
 import { IconButton } from '@mui/material'
 import { Add, Remove } from '@mui/icons-material'
 import { Container } from './styles'
+import { CarrinhoContext } from 'common/context/Carrinho'
 
 const Produto = ({ nome, foto, id, valor, unidade }) => {
+    const { carrinho, setCarrinho } = useContext(CarrinhoContext)
+    // console.log(carrinho)
+
     return (
         <Container>
             <div>
