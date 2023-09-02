@@ -16,6 +16,17 @@ export const CarrinhoProvider = ({ children }) => {
 export const useCarrinhoContext = () => {
     const { carrinho, setCarrinho } = useContext(CarrinhoContext)
 
+    const alterarQuantidade = (id, quantidade) => {
+        // Retorna um novo array representando o carrinho atualizado
+        return carrinho.map(itemCarrinho => {
+            // Verifica se o ID corresponde a um produto no carrinho e modifica a quantidade desse produto no carrinho
+            if(itemCarrinho.id === id) {
+                itemCarrinho.quantidade += quantidade
+            }
+            return itemCarrinho
+        })
+    }
+
     const adicionarProduto = (novoProduto) => {
         // Verifica se um novo produto com o mesmo ID já está no carrinho de compras. Se já estiver será definida como true, se não, será definida como false
         const possuiProduto = carrinho.some(itemCarrinho => itemCarrinho.id === novoProduto.id)
@@ -23,25 +34,38 @@ export const useCarrinhoContext = () => {
         // Essa parte é executada se o produto ainda não estiver no carrinho
         if(!possuiProduto) {
             novoProduto.quantidade = 1
-            setCarrinho(carrinhoAnterior => [...carrinhoAnterior, novoProduto]) // Cria um novo array que inclui todos os itens existentes no carrinho mais o novo produto
+            setCarrinho(carrinhoAnterior => [...carrinhoAnterior, novoProduto])
             return
         }
 
-        // Essa parte é executada se o produto já existe o carrinho
-        setCarrinho(carrinhoAnterior => (
-            carrinhoAnterior.map(itemCarrinho => {
-                // Se isso for verdadeiro, significa que o produto que está sendo iterado é o mesmo que estamos tentando atualizar
-                if(itemCarrinho.id === novoProduto.id) {
-                    itemCarrinho.quantidade += 1 // A quantidade desse produto é incrementada em 1
-                }
-                return itemCarrinho
-            })
-        ))
+        // Essa parte é executada se o produto já existe no carrinho
+        setCarrinho(alterarQuantidade(novoProduto.id, 1))
+    }
+
+    const removerProduto = (id) => {
+        // Retorna o produto no carrinho que possui o mesmo ID que foi passado como argumento
+        const produto = carrinho.find(itemCarrinho => itemCarrinho.id === id)
+        
+        const ultimaQuantidade = produto?.quantidade === 1
+        
+        // Remove o produto do carrinho quando ele for o último item desse tipo no carrinho
+        if(ultimaQuantidade) {
+            setCarrinho(carrinhoAnterior => (
+                carrinhoAnterior.filter(itemCarrinho => itemCarrinho.id !== produto.id)
+            ))
+            return
+        }
+        
+        // Verifica se o produto existe no carrinho e chama uma função para reduzir a quantidade desse produto em uma unidade
+        if(produto) {
+            setCarrinho(alterarQuantidade(produto.id, -1))
+        }
     }
 
     return {
         carrinho,
         setCarrinho,
-        adicionarProduto
+        adicionarProduto,
+        removerProduto
     }
 }
