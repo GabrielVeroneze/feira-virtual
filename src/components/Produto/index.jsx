@@ -5,7 +5,7 @@ import { Container } from './styles'
 import { useCarrinhoContext } from 'common/context/Carrinho'
 
 const Produto = ({ nome, foto, id, valor, unidade }) => {
-    const { carrinho, adicionarProduto } = useCarrinhoContext()
+    const { carrinho, adicionarProduto, removerProduto } = useCarrinhoContext()
 
     const produtoNoCarrinho = carrinho.find(itemCarrinho => itemCarrinho.id === id)
 
@@ -18,11 +18,17 @@ const Produto = ({ nome, foto, id, valor, unidade }) => {
                 </p>
             </div>
             <div>
-                <IconButton color="secondary">
+                <IconButton
+                    color="secondary"
+                    onClick={() => removerProduto(id)}
+                >
                     <Remove />
                 </IconButton>
                 {produtoNoCarrinho?.quantidade || 0}
-                <IconButton onClick={() => adicionarProduto({ nome, foto, id, valor })}>
+                <IconButton
+                    color='primary'
+                    onClick={() => adicionarProduto({ nome, foto, id, valor })}
+                >
                     <Add />
                 </IconButton>
             </div>
