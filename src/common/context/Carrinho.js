@@ -46,7 +46,7 @@ export const useCarrinhoContext = () => {
         // Retorna o produto no carrinho que possui o mesmo ID que foi passado como argumento
         const produto = carrinho.find(itemCarrinho => itemCarrinho.id === id)
         
-        const ultimaQuantidade = produto?.quantidade === 1
+        const ultimaQuantidade = produto.quantidade === 1
         
         // Remove o produto do carrinho quando ele for o último item desse tipo no carrinho
         if(ultimaQuantidade) {
@@ -56,10 +56,8 @@ export const useCarrinhoContext = () => {
             return
         }
         
-        // Verifica se o produto existe no carrinho e chama uma função para reduzir a quantidade desse produto em uma unidade
-        if(produto) {
-            setCarrinho(alterarQuantidade(produto.id, -1))
-        }
+        // Chama uma função para reduzir a quantidade desse produto em uma unidade
+        setCarrinho(alterarQuantidade(produto.id, -1))
     }
 
     return {
