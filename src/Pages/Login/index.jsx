@@ -34,7 +34,12 @@ const Login = () => {
                     onChange={event => setSaldo(event.target.value)}
                 />
             </InputContainer>
-            <Button variant="contained" color="primary" onClick={redirecionar}>
+            <Button
+                variant="contained"
+                color="primary"
+                onClick={redirecionar}
+                disabled={nome.length < 4}
+            >
                 Avançar
             </Button>
         </Container>
