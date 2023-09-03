@@ -63,7 +63,7 @@ export const useCarrinhoContext = () => {
             ))
             return
         }
-        
+
         // Chama uma função para reduzir a quantidade desse produto em uma unidade
         setCarrinho(alterarQuantidade(produto.id, -1))
     }
@@ -75,7 +75,6 @@ export const useCarrinhoContext = () => {
 
         setQuantidadeProdutos(quantidadeTotal)
     }, [carrinho, setQuantidadeProdutos])
-
 
     return {
         carrinho,
