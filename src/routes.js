@@ -26,7 +26,14 @@ const Router = () => {
                         }
                     />
                 </Route>
-                <Route path="/carrinho" element={<Carrinho />} />
+                <Route
+                    path="/carrinho"
+                    element={
+                        <CarrinhoProvider>
+                            <Carrinho />
+                        </CarrinhoProvider>
+                    }
+                />
             </Routes>
         </BrowserRouter>
     )
