@@ -4,6 +4,7 @@ import { CarrinhoProvider } from "common/context/Carrinho"
 import Carrinho from "Pages/Carrinho"
 import Feira from "Pages/Feira"
 import Login from "Pages/Login"
+import { PagamentoProvider } from "common/context/Pagamento"
 
 const Router = () => {
     return (
@@ -25,7 +26,14 @@ const Router = () => {
                         }
                     >
                         <Route path="/feira" element={<Feira />} />
-                        <Route path="/carrinho" element={<Carrinho />} />
+                        <Route
+                            path="/carrinho"
+                            element={
+                                <PagamentoProvider>
+                                    <Carrinho />
+                                </PagamentoProvider>
+                            }
+                        />
                     </Route>
                 </Route>
             </Routes>
