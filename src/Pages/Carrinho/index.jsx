@@ -8,7 +8,7 @@ import { usePagamentoContext } from 'common/context/Pagamento'
 
 const Carrinho = () => {
     const [openSnackbar, setOpenSnackbar] = useState(false)
-    const { carrinho } = useCarrinhoContext()
+    const { carrinho, valorTotal } = useCarrinhoContext()
     const { tiposPagamento, formaPagamento, mudarFormaPagamento } = usePagamentoContext()
 
     const navigate = useNavigate()
@@ -40,7 +40,7 @@ const Carrinho = () => {
             <TotalContainer>
                 <div>
                     <h2>Total no Carrinho: </h2>
-                    <span>R$ </span>
+                    <span>R$ {valorTotal.toFixed(2)}</span>
                 </div>
                 <div>
                     <h2> Saldo: </h2>
