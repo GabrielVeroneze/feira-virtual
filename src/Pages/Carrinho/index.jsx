@@ -1,23 +1,20 @@
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Alert, Button, InputLabel, MenuItem, Select, Snackbar } from '@mui/material'
 import { Container, PagamentoContainer, TotalContainer, Voltar } from './styles'
 import { useCarrinhoContext } from 'common/context/Carrinho'
 import Produto from 'components/Produto'
-import { PagamentoContext } from 'common/context/Pagamento'
+import { usePagamentoContext } from 'common/context/Pagamento'
 
 const Carrinho = () => {
     const [openSnackbar, setOpenSnackbar] = useState(false)
     const { carrinho } = useCarrinhoContext()
-    const { tiposPagamento, formaPagamento, setFormaPagamento } = useContext(PagamentoContext)
+    const { tiposPagamento, formaPagamento, mudarFormaPagamento } = usePagamentoContext()
+
     const navigate = useNavigate()
     
     const redirecionar = () => {
         navigate(-1)
-    }
-
-    const handleChange = (event) => {
-        setFormaPagamento(event.target.value)
     }
 
     return (
@@ -31,7 +28,7 @@ const Carrinho = () => {
                 <InputLabel>Forma de Pagamento</InputLabel>
                 <Select
                     value={formaPagamento.id}
-                    onChange={handleChange}
+                    onChange={event => mudarFormaPagamento(event.target.value)}
                 >
                     {tiposPagamento.map(pagamento => (
                         <MenuItem key={pagamento.id} value={pagamento.id}>
