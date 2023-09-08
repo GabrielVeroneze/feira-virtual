@@ -1,15 +1,18 @@
-import { useState } from 'react'
+import { useContext, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Alert, Button, InputLabel, MenuItem, Select, Snackbar } from '@mui/material'
 import { Container, PagamentoContainer, TotalContainer, Voltar } from './styles'
-import { useCarrinhoContext } from 'common/context/Carrinho'
 import Produto from 'components/Produto'
+import { useCarrinhoContext } from 'common/context/Carrinho'
 import { usePagamentoContext } from 'common/context/Pagamento'
+import { UsuarioContext } from 'common/context/Usuario'
 
 const Carrinho = () => {
     const [openSnackbar, setOpenSnackbar] = useState(false)
     const { carrinho, valorTotal } = useCarrinhoContext()
     const { tiposPagamento, formaPagamento, mudarFormaPagamento } = usePagamentoContext()
+    const { saldo } = useContext(UsuarioContext)
+    const saldoTotal = useMemo(() => saldo - valorTotal, [saldo, valorTotal])
 
     const navigate = useNavigate()
     
@@ -44,17 +47,18 @@ const Carrinho = () => {
                 </div>
                 <div>
                     <h2> Saldo: </h2>
-                    <span> R$ </span>
+                    <span> R$ {Number(saldo).toFixed(2)}</span>
                 </div>
                 <div>
                     <h2> Saldo Total: </h2>
-                    <span> R$ </span>
+                    <span> R$ {saldoTotal.toFixed(2)}</span>
                 </div>
             </TotalContainer>
             <Button
                 onClick={() => {
                     setOpenSnackbar(true)
                 }}
+                disabled={saldoTotal < 0}
                 color="primary"
                 variant="contained"
             >
