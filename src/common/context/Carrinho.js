@@ -6,6 +6,7 @@ CarrinhoContext.displayName = "Carrinho"
 export const CarrinhoProvider = ({ children }) => {
     const [carrinho, setCarrinho] = useState([])
     const [quantidadeProdutos, setQuantidadeProdutos] = useState(0)
+    const [valorTotal, setValorTotal] = useState(0)
 
     return (
         <CarrinhoContext.Provider
@@ -13,7 +14,9 @@ export const CarrinhoProvider = ({ children }) => {
                 carrinho,
                 setCarrinho,
                 quantidadeProdutos,
-                setQuantidadeProdutos
+                setQuantidadeProdutos,
+                valorTotal,
+                setValorTotal
             }}
         >
             {children}
@@ -22,7 +25,7 @@ export const CarrinhoProvider = ({ children }) => {
 }
 
 export const useCarrinhoContext = () => {
-    const { carrinho, setCarrinho, quantidadeProdutos, setQuantidadeProdutos } = useContext(CarrinhoContext)
+    const { carrinho, setCarrinho, quantidadeProdutos, setQuantidadeProdutos, valorTotal, setValorTotal } = useContext(CarrinhoContext)
 
     const alterarQuantidade = (id, quantidade) => {
         // Retorna um novo array representando o carrinho atualizado
@@ -69,12 +72,16 @@ export const useCarrinhoContext = () => {
     }
 
     useEffect(() => {
-        const quantidadeTotal = carrinho.reduce((acumulador, produto) => (
-            acumulador + produto.quantidade
-        ), 0)
+        const { novaQuantidade, novoTotal } = carrinho.reduce((acumulador, produto) => (
+            {
+                novaQuantidade: acumulador.novaQuantidade + produto.quantidade,
+                novoTotal: acumulador.novoTotal + (produto.valor * produto.quantidade)
+            }
+        ), { novaQuantidade: 0, novoTotal: 0 })
 
-        setQuantidadeProdutos(quantidadeTotal)
-    }, [carrinho, setQuantidadeProdutos])
+        setQuantidadeProdutos(novaQuantidade)
+        setValorTotal(novoTotal)
+    }, [carrinho, setQuantidadeProdutos, setValorTotal])
 
     return {
         carrinho,
@@ -82,6 +89,7 @@ export const useCarrinhoContext = () => {
         adicionarProduto,
         removerProduto,
         quantidadeProdutos,
-        setQuantidadeProdutos
+        setQuantidadeProdutos,
+        valorTotal
     }
 }
