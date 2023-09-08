@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Alert, Button, InputLabel, Snackbar } from '@mui/material'
+import { Alert, Button, InputLabel, MenuItem, Select, Snackbar } from '@mui/material'
 import { Container, PagamentoContainer, TotalContainer, Voltar } from './styles'
 import { useCarrinhoContext } from 'common/context/Carrinho'
 import Produto from 'components/Produto'
@@ -9,15 +9,17 @@ import { PagamentoContext } from 'common/context/Pagamento'
 const Carrinho = () => {
     const [openSnackbar, setOpenSnackbar] = useState(false)
     const { carrinho } = useCarrinhoContext()
-    const { formaPagamento } = useContext(PagamentoContext)
+    const { tiposPagamento, formaPagamento, setFormaPagamento } = useContext(PagamentoContext)
     const navigate = useNavigate()
     
     const redirecionar = () => {
         navigate(-1)
     }
 
-    console.log(formaPagamento);
-    
+    const handleChange = (event) => {
+        setFormaPagamento(event.target.value)
+    }
+
     return (
         <Container>
             <Voltar onClick={redirecionar} />
@@ -25,8 +27,18 @@ const Carrinho = () => {
             {carrinho.map(produto => (
                 <Produto key={produto.id} {...produto} />
             ))}
-            <PagamentoContainer>
-                <InputLabel> Forma de Pagamento </InputLabel>
+            <PagamentoContainer variant="standard">
+                <InputLabel>Forma de Pagamento</InputLabel>
+                <Select
+                    value={formaPagamento.id}
+                    onChange={handleChange}
+                >
+                    {tiposPagamento.map(pagamento => (
+                        <MenuItem key={pagamento.id} value={pagamento.id}>
+                            {pagamento.nome}
+                        </MenuItem>
+                    ))}
+                </Select>
             </PagamentoContainer>
             <TotalContainer>
                 <div>
