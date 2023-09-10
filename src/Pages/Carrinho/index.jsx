@@ -58,7 +58,7 @@ const Carrinho = () => {
                 onClick={() => {
                     setOpenSnackbar(true)
                 }}
-                disabled={saldoTotal < 0}
+                disabled={saldoTotal < 0 || carrinho.length === 0}
                 color="primary"
                 variant="contained"
             >
