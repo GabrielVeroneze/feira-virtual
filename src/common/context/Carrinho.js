@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { usePagamentoContext } from "./Pagamento";
+import { UsuarioContext } from "./Usuario";
 
 export const CarrinhoContext = createContext()
 CarrinhoContext.displayName = "Carrinho"
@@ -28,6 +29,7 @@ export const CarrinhoProvider = ({ children }) => {
 export const useCarrinhoContext = () => {
     const { carrinho, setCarrinho, quantidadeProdutos, setQuantidadeProdutos, valorTotal, setValorTotal } = useContext(CarrinhoContext)
     const { formaPagamento } = usePagamentoContext()
+    const { setSaldo } = useContext(UsuarioContext)
 
     const alterarQuantidade = (id, quantidade) => {
         // Retorna um novo array representando o carrinho atualizado
@@ -73,6 +75,11 @@ export const useCarrinhoContext = () => {
         setCarrinho(alterarQuantidade(produto.id, -1))
     }
 
+    const efetuarCompra = () => {
+        setCarrinho([])
+        setSaldo(saldoAtual => saldoAtual - valorTotal)
+    }
+
     useEffect(() => {
         const { novaQuantidade, novoTotal } = carrinho.reduce((acumulador, produto) => (
             {
@@ -92,6 +99,7 @@ export const useCarrinhoContext = () => {
         removerProduto,
         quantidadeProdutos,
         setQuantidadeProdutos,
-        valorTotal
+        valorTotal,
+        efetuarCompra
     }
 }
