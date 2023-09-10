@@ -21,19 +21,14 @@ const Router = () => {
                     <Route
                         element={
                             <CarrinhoProvider>
-                                <Outlet />
+                                <PagamentoProvider>
+                                    <Outlet />
+                                </PagamentoProvider>
                             </CarrinhoProvider>
                         }
                     >
                         <Route path="/feira" element={<Feira />} />
-                        <Route
-                            path="/carrinho"
-                            element={
-                                <PagamentoProvider>
-                                    <Carrinho />
-                                </PagamentoProvider>
-                            }
-                        />
+                        <Route path="/carrinho" element={<Carrinho />} />
                     </Route>
                 </Route>
             </Routes>
