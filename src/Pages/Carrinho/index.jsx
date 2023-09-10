@@ -9,7 +9,7 @@ import { UsuarioContext } from 'common/context/Usuario'
 
 const Carrinho = () => {
     const [openSnackbar, setOpenSnackbar] = useState(false)
-    const { carrinho, valorTotal } = useCarrinhoContext()
+    const { carrinho, valorTotal, efetuarCompra } = useCarrinhoContext()
     const { tiposPagamento, formaPagamento, mudarFormaPagamento } = usePagamentoContext()
     const { saldo } = useContext(UsuarioContext)
     const saldoTotal = useMemo(() => saldo - valorTotal, [saldo, valorTotal])
@@ -56,6 +56,7 @@ const Carrinho = () => {
             </TotalContainer>
             <Button
                 onClick={() => {
+                    efetuarCompra()
                     setOpenSnackbar(true)
                 }}
                 disabled={saldoTotal < 0 || carrinho.length === 0}
