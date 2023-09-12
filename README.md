@@ -6,12 +6,14 @@
 ## Índice
 
 - [Descrição](#descrição)
-- [Estrutura e Gerenciamento](#building_construction-estrutura-e-gerenciamento)
 - [Funcionalidades e Recursos](#toolbox-funcionalidades-e-recursos)
    - [Páginas Principais](#páginas-principais)
       - [Login](#login)
       - [Feira](#feira)
       - [Carrinho](#carrinho)
+   - [Gerenciamento de Estado](#gerenciamento-de-estado)
+   - [Roteamento](#roteamento)
+   - [Boas Práticas e Responsividade](#boas-práticas-e-responsividade)
 - [Ferramentas utilizadas](#computer-ferramentas-utilizadas)
 - [Acesso ao projeto](#open_file_folder-acesso-ao-projeto)
 - [Instruções](#clipboard-instruções)
@@ -19,16 +21,6 @@
 
 <h1 align="center" id="descrição">Feira Virtual</h1>
 <p align="center">A Feira Virtual é uma aplicação de e-commerce, esta aplicação permite aos usuários criar uma conta, navegar pela feira, adicionar produtos ao carrinho de compras e efetuar pagamentos com diferentes formas de pagamento.</p>
-
-## :building_construction: Estrutura e Gerenciamento
-
-A aplicação foi construída seguindo boas práticas de desenvolvimento e arquitetura, com base no princípio da responsabilidade única. Ela utiliza o `React`, faz uso de rotas com `BrowserRouter`, `Routes`, e `Route` do pacote react-router-dom, bem como o hook `useNavigate` para gerenciar a navegação.
-
-O gerenciamento de estados globais é feito utilizando a `ContextAPI` do `React`, onde três principais contextos são definidos: `Usuário`, `Carrinho`, e `Pagamento`. Cada contexto possui funcionalidades específicas relacionadas a sua área de responsabilidade.
-
-São usados `hooks customizados` para centralizar a lógica de negócios e manutenção dos contextos fora dos componentes, tornando os componentes mais desacoplados e reutilizáveis.
-
-Além disso, utiliza-se o hook `useEffect` para escutar mudanças no contexto e atualizar dinamicamente os cálculos e estados relacionados.
 
 ## :toolbox: Funcionalidades e Recursos
 
@@ -61,11 +53,31 @@ Além disso, utiliza-se o hook `useEffect` para escutar mudanças no contexto e 
 
    - `Conclusão da compra`: Ao efetuar a compra com sucesso, o carrinho é esvaziado e o valor total da compra é devidamente subtraído do saldo do usuário. Este processo é acompanhado de uma notificação visual confirmando a conclusão da transação é exibida.
 
+### Gerenciamento de Estado
+
+- `ContextAPI`: O gerenciamento de estados globais é feito utilizando a `ContextAPI`, onde três principais contextos são definidos: `Usuário`, `Carrinho`, e `Pagamento`. Cada contexto possui funcionalidades específicas relacionadas a sua área de responsabilidade.
+
+- `Hooks Customizados`: São usados `hooks customizados` para centralizar a lógica de negócios e manutenção dos contextos fora dos componentes, tornando os componentes mais desacoplados e reutilizáveis.
+
+- `useEffect`: O hook `useEffect` é usado para escutar mudanças no contexto e atualizar dinamicamente os cálculos e estados relacionados.
+
+### Roteamento
+
+- `BrowserRouter, Routes e Route`: Usa os componentes fornecidos pelo `react-router-dom` para criar e renderizar rotas. O sistema de navegação contém três páginas principais: `Login`, `Feira` e `Carrinho`.
+
+- `useNavigate`: O hook `useNavigate` é usado para realizar a navegação entre diferentes páginas da aplicação. Como o botão `Avançar` na página de Login, que redireciona o usuário para a página de Feira, também no `ícone de carrinho`, que encaminha o usuário para a página de Carrinho.
+
+### Boas Práticas e Responsividade
+
+- `Boas Práticas`: A aplicação foi construída seguindo boas práticas de desenvolvimento e arquitetura, com base no princípio da responsabilidade única.
+
+- `Media queries`: Implementa `Media Queries` com o intuito de aplicar responsividade à aplicação, adaptando-se a diferentes tamanhos de tela. Ele mantém uma experiência de usuário agradável em dispositivos móveis, tablets e desktops.
+
 ## :computer: Ferramentas utilizadas
 
-| React | Sass | React Router |
-| ----- | ---- | ------------ |
-<img height="50px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"> | <img height="50px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/sass/sass-original.svg"> | <img height="50px" src="https://github.com/GabrielVeroneze/react-blog/assets/95183901/e4274260-9415-408e-9757-5f2277c42a29">
+| React | Context API | React Router | Styled Components | 
+| ----- | ---------- | ------------ | ----------------- |
+<img height="50px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"> | |<img height="50px" src="https://github.com/GabrielVeroneze/react-blog/assets/95183901/e4274260-9415-408e-9757-5f2277c42a29"> | 
 
 ## :open_file_folder: Acesso ao projeto
 Você pode baixar o projeto diretamente:  
