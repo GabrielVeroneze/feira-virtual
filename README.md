@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+<p align="center"> <img src="https://imgur.com/u1Nh770.png" alt="React: desenvolvendo em React Router com JavaScript"> </p>
+<p>Projeto desenvolvido durante o curso "React: gerenciamento de estados globais com ContextAPI" da Alura.</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<hr>
 
-## Available Scripts
+## Índice
 
-In the project directory, you can run:
+- [Descrição](#descrição)
+- [Estrutura e Gerenciamento](#building_construction-estrutura-e-gerenciamento)
+- [Funcionalidades e Recursos](#toolbox-funcionalidades-e-recursos)
+   - [Páginas Principais](#páginas-principais)
+      - [Login](#login)
+      - [Feira](#feira)
+      - [Carrinho](#carrinho)
+- [Ferramentas utilizadas](#computer-ferramentas-utilizadas)
+- [Acesso ao projeto](#open_file_folder-acesso-ao-projeto)
+- [Instruções](#clipboard-instruções)
+- [Demonstração Visual](#demonstração-visual)
 
-### `npm start`
+<h1 align="center" id="descrição">Feira Virtual</h1>
+<p align="center">A Feira Virtual é uma aplicação de e-commerce, esta aplicação permite aos usuários criar uma conta, navegar pela feira, adicionar produtos ao carrinho de compras e efetuar pagamentos com diferentes formas de pagamento.</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## :building_construction: Estrutura e Gerenciamento
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+A aplicação foi construída seguindo boas práticas de desenvolvimento e arquitetura, com base no princípio da responsabilidade única. Ela utiliza o `React`, faz uso de rotas com `BrowserRouter`, `Routes`, e `Route` do pacote react-router-dom, bem como o hook `useNavigate` para gerenciar a navegação.
 
-### `npm test`
+O gerenciamento de estados globais é feito utilizando a `ContextAPI` do `React`, onde três principais contextos são definidos: `Usuário`, `Carrinho`, e `Pagamento`. Cada contexto possui funcionalidades específicas relacionadas a sua área de responsabilidade.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+São usados `hooks customizados` para centralizar a lógica de negócios e manutenção dos contextos fora dos componentes, tornando os componentes mais desacoplados e reutilizáveis.
 
-### `npm run build`
+Além disso, utiliza-se o hook `useEffect` para escutar mudanças no contexto e atualizar dinamicamente os cálculos e estados relacionados.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## :toolbox: Funcionalidades e Recursos
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Páginas Principais
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- #### `Login`:
+   - `Inserção de dados`: Os usuários tem a possibilidade de introduzir o seu nome e o valor do seu saldo nos campos de entrada.
+   
+   - `Botão de Navegação`: Abaixo dos campos, um botão denominado "Avançar" direciona o usuário para a página de feira, porém ele permanece desabilitado até que o campo de nome contenha, no mínimo, quatro caracteres.
 
-### `npm run eject`
+- #### `Feira`: 
+   - `Lista de produtos`: Os usuários têm a capacidade de visualizar uma lista de produtos disponíveis para compra. Esta lista contém informações sobre os nomes dos produtos bem como os respetivos preços por quilograma.
+   
+   - `Controle de unidades`: Para cada produto listado, os usuários têm a disposição botões de adição e subtração, que permite adicionar ou remover unidades dos produtos selecionados no seu carrinho de compras.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   - `Informações do usuário`: No topo da página, uma seção apresenta o nome do utilizador juntamente com o seu saldo atual.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   - `Carrinho de compras`: Além disso, na barra de navegação um ícone de carrinho de compras é exibido com um contador que indica o número de produtos presentes no carrinho. Importante notar que o ícone de carrinho de compras é desativado quando o carrinho se encontra vazio.
+   
+   - `Produtos disponíveis`: Os produtos atualmente disponíveis para compra incluem: Tomate, Brócolis, Batata, Pepino e Abóbora.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- #### `Carrinho`:
+   - `Visualização de produtos`: Os usuários têm a possibilidade de visualizar os produtos que foram adicionados à sua lista de compras na página anterior, especificamente na página da feira.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   - `Opções de pagamento`: No menu de opções são disponibilizadas quatro alternativas de pagamento: Boleto, Cartão de Crédito, PIX e Crediário. É importante destacar que o contexto de pagamento realiza automaticamente a aplicação de juros, com base na forma de pagamento selecionada pelo usuário.
 
-## Learn More
+   - `Informações relevantes`: São exibidas informações essenciais, incluindo o valor total dos produtos contidos no carrinho de compras, o saldo disponível do usuário e o saldo remanescente após a conclusão da compra.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   - `Validação do botão`: Importante notar que o botão denominado "Comprar" permanecerá desativado caso o valor total da compra exceda o saldo disponível do usuário ou se o carrinho de compras se encontrar vazio.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   - `Conclusão da compra`: Ao efetuar a compra com sucesso, o carrinho é esvaziado e o valor total da compra é devidamente subtraído do saldo do usuário. Este processo é acompanhado de uma notificação visual confirmando a conclusão da transação é exibida.
 
-### Code Splitting
+## :computer: Ferramentas utilizadas
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+| React | Sass | React Router |
+| ----- | ---- | ------------ |
+<img height="50px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"> | <img height="50px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/sass/sass-original.svg"> | <img height="50px" src="https://github.com/GabrielVeroneze/react-blog/assets/95183901/e4274260-9415-408e-9757-5f2277c42a29">
 
-### Analyzing the Bundle Size
+## :open_file_folder: Acesso ao projeto
+Você pode baixar o projeto diretamente:  
+[Baixar código fonte](https://github.com/GabrielVeroneze/react-blog/archive/refs/heads/master.zip)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Também é possível clonar o repositório usando o seguinte comando:
+```
+git clone https://github.com/GabrielVeroneze/react-blog.git
+```
 
-### Making a Progressive Web App
+## :clipboard: Instruções
+Para usar este projeto em seu computador localmente, você precisará seguir estas etapas:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Certifique-se de que você tem o Node.js instalado em seu computador. Se não tiver, faça o download e a instalação a partir do [site oficial](https://nodejs.org/).
 
-### Advanced Configuration
+2. Abra o terminal e navegue até a pasta raiz do projeto usando o comando `cd` no terminal. Por exemplo:
+   ```
+   cd meu-projeto
+   ```
+3. Antes de iniciar a aplicação, instale as dependências necessárias executando o seguinte comando:
+   ```
+   npm install
+   ```
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Isso irá instalar todas as dependências listadas no arquivo package.json.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+4. Após a instalação das dependências, inicie o servidor de desenvolvimento executando o seguinte comando:
+   ```
+   npm start
+   ```
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Isso abrirá automaticamente a aplicação no navegador. Se não abrir, acesse o endereço http://localhost:3000.
+<br>
 
-### Deployment
+## Demonstração Visual
+`Páginas de Início e Sobre mim`
+![React Blog](https://imgur.com/NQQhA5Y.gif)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+`Posts`
+![React Blog](https://imgur.com/8X0FlpW.gif)
 
-### `npm run build` fails to minify
+`Posts recomendados`
+![React Blog](https://imgur.com/cOwL7RV.gif)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`Página não encontrada`
+![React Blog](https://github.com/GabrielVeroneze/react-blog/assets/95183901/673b4456-aae4-44e0-a92a-19af63f176dd)
