@@ -26,7 +26,7 @@
 
 ### Páginas Principais
 
-- #### `Login`:
+- #### Login:
    - `Inserção de dados`: Os usuários tem a possibilidade de introduzir o seu nome e o valor do seu saldo nos campos de entrada.
    
    - `Botão de Navegação`: Abaixo dos campos, um botão denominado "Avançar" direciona o usuário para a página de feira, porém ele permanece desabilitado até que o campo de nome contenha, no mínimo, quatro caracteres.
