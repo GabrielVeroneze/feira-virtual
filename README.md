@@ -77,7 +77,7 @@
 
 | React | Context API | React Router | Styled Components | 
 | ----- | ---------- | ------------ | ----------------- |
-<img height="50px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"> | <img height="50px" src="https://github.com/GabrielVeroneze/feira-virtual/assets/95183901/63e05b70-6218-455f-b37d-f5d888cd3748"> | <img height="50px" src="https://github.com/GabrielVeroneze/react-blog/assets/95183901/e4274260-9415-408e-9757-5f2277c42a29"> | <img height="50px" src="https://github.com/GabrielVeroneze/feira-virtual/assets/95183901/17447cac-f50e-4b9a-91bf-52617c28a16f">
+<img align="center" height="60px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"> | <img align="center" height="70px" src="https://github.com/GabrielVeroneze/feira-virtual/assets/95183901/63e05b70-6218-455f-b37d-f5d888cd3748"> | <img align="center" height="50px" src="https://github.com/GabrielVeroneze/react-blog/assets/95183901/e4274260-9415-408e-9757-5f2277c42a29"> | <img align="center" height="100px" src="https://github.com/GabrielVeroneze/feira-virtual/assets/95183901/17447cac-f50e-4b9a-91bf-52617c28a16f">
 
 ## :open_file_folder: Acesso ao projeto
 Você pode baixar o projeto diretamente:  
