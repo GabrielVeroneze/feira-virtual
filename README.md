@@ -1,4 +1,4 @@
-<p align="center"> <img src="https://imgur.com/u1Nh770.png" alt="React: desenvolvendo em React Router com JavaScript"> </p>
+<p align="center"> <img src="https://imgur.com/QDt4Sby.png" alt="React: gerenciamento de estados globais com ContextAPI"> </p>
 <p>Projeto desenvolvido durante o curso "React: gerenciamento de estados globais com ContextAPI" da Alura.</p>
 
 <hr>
@@ -111,14 +111,14 @@ Para usar este projeto em seu computador localmente, você precisará seguir est
 <br>
 
 ## Demonstração Visual
-`Páginas de Início e Sobre mim`
-![Feira Virtual](https://imgur.com/NQQhA5Y.gif)
+`Inserindo Dados`
+![Feira Virtual](https://github.com/GabrielVeroneze/feira-virtual/assets/95183901/aa4faeaf-5598-43c7-a439-718252d88fb0)
 
-`Posts`
-![Feira Virtual](https://imgur.com/8X0FlpW.gif)
+`Adicionando Produtos`
+![Feira Virtual](https://github.com/GabrielVeroneze/feira-virtual/assets/95183901/456eef8d-bf8c-4262-983f-b61fa6be8770)
 
-`Posts recomendados`
-![Feira Virtual](https://imgur.com/cOwL7RV.gif)
+`Selecionando Opção de Pagamento`
+![Feira Virtual](https://github.com/GabrielVeroneze/feira-virtual/assets/95183901/41586a2d-d20c-423b-b5ce-8ca489107900)
 
-`Página não encontrada`
-![React Blog](https://github.com/GabrielVeroneze/react-blog/assets/95183901/673b4456-aae4-44e0-a92a-19af63f176dd)
+`Efetuando Compra`
+![Feira Virtual](https://github.com/GabrielVeroneze/feira-virtual/assets/95183901/c79b73d7-f17f-4c73-a37f-d2c0f019a169)
