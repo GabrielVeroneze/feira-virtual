@@ -51,7 +51,7 @@
 
    - `Validação do botão`: Importante notar que o botão denominado "Comprar" permanecerá desativado caso o valor total da compra exceda o saldo disponível do usuário ou se o carrinho de compras se encontrar vazio.
 
-   - `Conclusão da compra`: Ao efetuar a compra com sucesso, o carrinho é esvaziado e o valor total da compra é devidamente subtraído do saldo do usuário. Este processo é acompanhado de uma notificação visual confirmando a conclusão da transação é exibida.
+   - `Conclusão da compra`: Ao efetuar a compra com sucesso, o carrinho é esvaziado e o valor total da compra é devidamente subtraído do saldo do usuário. Este processo é acompanhado de uma notificação visual confirmando a conclusão da transação.
 
 ### Gerenciamento de Estado
 
