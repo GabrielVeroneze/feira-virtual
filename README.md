@@ -31,7 +31,7 @@
    
    - `Botão de Navegação`: Abaixo dos campos, um botão denominado "Avançar" direciona o usuário para a página de feira, porém ele permanece desabilitado até que o campo de nome contenha, no mínimo, quatro caracteres.
 
-- #### `Feira`: 
+- #### Feira: 
    - `Lista de produtos`: Os usuários têm a capacidade de visualizar uma lista de produtos disponíveis para compra. Esta lista contém informações sobre os nomes dos produtos bem como os respetivos preços por quilograma.
    
    - `Controle de unidades`: Para cada produto listado, os usuários têm a disposição botões de adição e subtração, que permite adicionar ou remover unidades dos produtos selecionados no seu carrinho de compras.
@@ -42,7 +42,7 @@
    
    - `Produtos disponíveis`: Os produtos atualmente disponíveis para compra incluem: Tomate, Brócolis, Batata, Pepino e Abóbora.
 
-- #### `Carrinho`:
+- #### Carrinho:
    - `Visualização de produtos`: Os usuários têm a possibilidade de visualizar os produtos que foram adicionados à sua lista de compras na página anterior, especificamente na página da feira.
 
    - `Opções de pagamento`: No menu de opções são disponibilizadas quatro alternativas de pagamento: Boleto, Cartão de Crédito, PIX e Crediário. É importante destacar que o contexto de pagamento realiza automaticamente a aplicação de juros, com base na forma de pagamento selecionada pelo usuário.
@@ -81,11 +81,11 @@
 
 ## :open_file_folder: Acesso ao projeto
 Você pode baixar o projeto diretamente:  
-[Baixar código fonte](https://github.com/GabrielVeroneze/react-blog/archive/refs/heads/master.zip)
+[Baixar código fonte](https://github.com/GabrielVeroneze/feira-virtual/archive/refs/heads/master.zip)
 
 Também é possível clonar o repositório usando o seguinte comando:
 ```
-git clone https://github.com/GabrielVeroneze/react-blog.git
+git clone https://github.com/GabrielVeroneze/feira-virtual.git
 ```
 
 ## :clipboard: Instruções
@@ -112,13 +112,13 @@ Para usar este projeto em seu computador localmente, você precisará seguir est
 
 ## Demonstração Visual
 `Páginas de Início e Sobre mim`
-![React Blog](https://imgur.com/NQQhA5Y.gif)
+![Feira Virtual](https://imgur.com/NQQhA5Y.gif)
 
 `Posts`
-![React Blog](https://imgur.com/8X0FlpW.gif)
+![Feira Virtual](https://imgur.com/8X0FlpW.gif)
 
 `Posts recomendados`
-![React Blog](https://imgur.com/cOwL7RV.gif)
+![Feira Virtual](https://imgur.com/cOwL7RV.gif)
 
 `Página não encontrada`
 ![React Blog](https://github.com/GabrielVeroneze/react-blog/assets/95183901/673b4456-aae4-44e0-a92a-19af63f176dd)
